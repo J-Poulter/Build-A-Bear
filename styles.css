@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+main {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+h1 {
+  background-color: #F5BB00;
+  width: 100%;
+  text-align: center;
+  padding: 1.50%;
+  font-size: 3em;
+  color: #2176AE;
+}
