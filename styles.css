@@ -38,7 +38,6 @@ main {
 }
 
 .column {
-  border: solid 1px green;
   width: 28%;
 }
 
@@ -59,7 +58,6 @@ h3 {
 
 .button-box {
   display: flex;
-  border: solid pink;
   flex-wrap: wrap;
   width: 100%;
 }
@@ -77,7 +75,7 @@ h3 {
 
 .bear-portrait {
   display: flex;
-  border: solid blue;
+  background-color: white;
   height: 80%;
   width: 100%;
 }
@@ -85,7 +83,6 @@ h3 {
 .save-form {
   display: flex;
   align-items: center;
-  border: solid black;
   flex-direction: column;
   justify-content: center;
   margin-top: 2%;
