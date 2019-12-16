@@ -64,6 +64,7 @@ h3 {
   width: 100%;
 }
 
+
 .button {
   display: block;
   background-color: #64D6FC;
@@ -82,22 +83,31 @@ h3 {
 }
 
 .save-form {
-display: flex;
-align-items: center;
-border: solid black;
-flex-direction: column;
-justify-content: center;
-margin-top: 2%;
-padding: 2%;
+  display: flex;
+  align-items: center;
+  border: solid black;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 2%;
 }
 
 .user-input {
   background-color: #F5BB00;
   font-size: 1.65em;
+  padding: 1px 10px;
   width: 70%;
 }
+
+.user-input,
+.button {
+  border-radius: 12px;
+  box-shadow: 13px 12px 16px 0px rgba(0,0,0,0.53);
+}
+
 
 .save-button {
   display: block;
   align-items: center;
+  font-size: 2em;
+  margin-top: 4%;
 }
