@@ -111,3 +111,7 @@ h3 {
   font-size: 2em;
   margin-top: 4%;
 }
+
+.column:last-of-type {
+  text-align: center;
+}
