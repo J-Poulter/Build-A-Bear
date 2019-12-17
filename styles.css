@@ -133,3 +133,101 @@ h3 {
 .column:last-of-type {
   text-align: center;
 }
+
+.hats,
+.clothes {
+  position: absolute;
+  z-index: 1;
+}
+
+.accessories {
+  position: absolute;
+  z-index: 2;
+}
+
+.tophat {
+  left: 41%;
+  top: -4%;
+  transform: rotate(13deg);
+  width: 30%;
+}
+
+.sunhat {
+  left: 29%;
+  top: -13%;
+  transform: rotate(-9deg);
+  width: 49%;
+}
+
+.hairbow {
+  left: 26%;
+  top: 4%;
+  transform: rotate(-26deg);
+  width: 28%;
+}
+
+.crown {
+  left: 42%;
+  top: 0%;
+  transform: rotate(18deg);
+  width: 28%;
+}
+
+.space-helmet {
+  left: 30%;
+  top: 2%;
+  transform: rotate(15deg);
+  width: 42%;
+}
+
+.dress {
+  left: 1%;
+  top: 7%;
+  transform: rotate(7deg);
+  width: 88%;
+}
+
+.vest {
+  height: 99%;
+  left: -1%;
+  top: 0;
+  transform: rotate(-1deg);
+  width: 94%;
+}
+
+.necklace {
+  height: 13%;
+  left: 31%;
+  position: absolute;
+  top: 241px;
+  transform: rotate(10deg);
+  width: 28%;
+  z-index: 2;
+}
+
+.bowtie {
+  left: 37%;
+  position: absolute;
+  top: 41%;
+  transform: rotate(11deg);
+  width: 20%;
+  z-index: 2;
+}
+
+.smartwatch {
+  left: 13.75%;
+  position: absolute;
+  transform: rotate(70deg);
+  top: 33%;
+  width: 11%;
+  z-index: 2;
+}
+
+.sunglasses {
+  left: 31%;
+  position: absolute;
+  transform: rotate(16deg);
+  top: 19%;
+  width: 40%;
+  z-index: 2;
+}
