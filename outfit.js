@@ -14,4 +14,10 @@ class Outfit {
       this.garments.splice(2, 1, garment.alt);
     }
   }
+
+  changeBackground(background){
+    if (background.classList.contains('backgrounds')) {
+      this.background = background.alt;
+    }
+  }
 }
