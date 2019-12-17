@@ -171,3 +171,22 @@ h3 {
   width: 42%;
   z-index: 1;
 }
+
+.dress {
+  left: 1%;
+  position: absolute;
+  top: 7%;
+  transform: rotate(7deg);
+  width: 88%;
+  z-index: 1;
+}
+
+.vest {
+  height: 99%;
+  left: -1%;
+  position: absolute;
+  top: 0;
+  transform: rotate(-1deg);
+  width: 94%;
+  z-index: 1;
+}
