@@ -123,6 +123,13 @@ h3 {
   max-width: 100%;
 }
 
+.backgrounds {
+  position: absolute;
+  z-index: 0;
+  max-width: 100%;
+  height: 100%;
+}
+
 .column:last-of-type {
   text-align: center;
 }
