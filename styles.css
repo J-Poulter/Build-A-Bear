@@ -126,3 +126,48 @@ h3 {
 .column:last-of-type {
   text-align: center;
 }
+
+.tophat {
+  left: 41%;
+  position: absolute;
+  top: -4%;
+  transform: rotate(13deg);
+  width: 30%;
+  z-index: 1;
+}
+
+.sunhat {
+  left: 29%;
+  position: absolute;
+  top: -13%;
+  transform: rotate(-9deg);
+  width: 49%;
+  z-index: 1;
+}
+
+.hairbow {
+  left: 26%;
+  position: absolute;
+  top: 4%;
+  transform: rotate(-26deg);
+  width: 28%;
+  z-index: 1;
+}
+
+.crown {
+  left: 42%;
+  position: absolute;
+  top: 0%;
+  transform: rotate(18deg);
+  width: 28%;
+  z-index: 1;
+}
+
+.space-helmet {
+  left: 30%;
+  position: absolute;
+  top: 2%;
+  transform: rotate(15deg);
+  width: 42%;
+  z-index: 1;
+}
