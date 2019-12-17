@@ -26,18 +26,32 @@ function clickHandlerOutfits() {
 }
 
 function selectButton(buttonType, choiceType) {
+  x = choiceType;
+  if (event.target.classList.contains('selected-button')) {
+    event.target.classList.remove('selected-button');
+    removeChoice(x);
+  } else {
+    resetGarmentSelection(buttonType)
+    event.target.classList.add('selected-button');
+    displayChoice(x);
+  }
+}
+
+function resetGarmentSelection(buttonType){
   for (var i = 0; i < buttonType.length; i++) {
     buttonType[i].classList.remove('selected-button');
   }
-  event.target.classList.add('selected-button');
-  x = choiceType;
-  displayChoice(x);
+}
+
+function removeChoice(choiceType) {
+  for (var i = 0; i < choiceType.length; i++) {
+    choiceType[i].classList.add('hide');
+  }
 }
 
 function displayChoice(choiceType) {
-  for (var i = 0; i < choiceType.length; i++) {
-    choiceType[i].classList.add('hide');
-  } x = event.target.value;
+  removeChoice(choiceType);
+  x = event.target.value;
   choiceType[x].classList.remove('hide');
   currentOutfit.changeBackground(choiceType[x]);
   currentOutfit.changeGarment(choiceType[x]);
