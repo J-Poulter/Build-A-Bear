@@ -7,6 +7,10 @@ var clothes = document.querySelectorAll('.clothes-js');
 var accessories = document.querySelectorAll('.accessories-js');
 var backgrounds = document.querySelectorAll('.backgrounds-js');
 var globalSelector = document.querySelector('main');
+var outfitNum = 1;
+var outfitNameInput = document.querySelector('.user-input-js');
+var currentOutfit = new Outfit(outfitNameInput.value, outfitNum);
+
 globalSelector.addEventListener('click', clickHandlerOutfits);
 
 function clickHandlerOutfits() {
@@ -22,20 +26,34 @@ function clickHandlerOutfits() {
 }
 
 function selectButton(buttonType, choiceType) {
+  x = event.target.value;
+  if (event.target.classList.contains('selected-button')) {
+    event.target.classList.remove('selected-button');
+    removeChoice(choiceType);
+    currentOutfit.removeGarment(choiceType[x]);
+  } else {
+    resetGarmentSelection(buttonType)
+    event.target.classList.add('selected-button');
+    displayChoice(choiceType);
+  }
+}
+
+function resetGarmentSelection(buttonType){
   for (var i = 0; i < buttonType.length; i++) {
     buttonType[i].classList.remove('selected-button');
   }
-  event.target.classList.add('selected-button');
-  x = choiceType;
-  displayChoice(x);
 }
 
-function displayChoice(choiceType) {
-  console.log(choiceType);
+function removeChoice(choiceType) {
   for (var i = 0; i < choiceType.length; i++) {
     choiceType[i].classList.add('hide');
   }
+}
+
+function displayChoice(choiceType) {
+  removeChoice(choiceType);
   x = event.target.value;
   choiceType[x].classList.remove('hide');
-  console.log(choiceType[0]);
+  currentOutfit.changeBackground(choiceType[x]);
+  currentOutfit.changeGarment(choiceType[x]);
 }
