@@ -8,6 +8,12 @@ globalSelector.addEventListener('click', clickHandlerOutfits);
 function clickHandlerOutfits() {
   if (event.target.classList.contains('button-hats-js')) {
     selectButton(buttonHats);
+  } else if (event.target.classList.contains('button-clothes-js')) {
+    selectButton(buttonClothes);
+  } else if (event.target.classList.contains('button-accessories-js')) {
+    selectButton(buttonAccessories);
+  } else if (event.target.classList.contains('button-backgrounds-js')) {
+    selectButton(buttonBackgrounds);
   }
 }
 
