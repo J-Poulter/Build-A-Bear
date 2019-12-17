@@ -26,14 +26,15 @@ function clickHandlerOutfits() {
 }
 
 function selectButton(buttonType, choiceType) {
-  x = choiceType;
+  x = event.target.value;
   if (event.target.classList.contains('selected-button')) {
     event.target.classList.remove('selected-button');
-    removeChoice(x);
+    removeChoice(choiceType);
+    currentOutfit.removeGarment(choiceType[x]);
   } else {
     resetGarmentSelection(buttonType)
     event.target.classList.add('selected-button');
-    displayChoice(x);
+    displayChoice(choiceType);
   }
 }
 
