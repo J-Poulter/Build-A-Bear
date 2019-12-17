@@ -78,6 +78,11 @@ h3 {
   width: fit-content;
 }
 
+.selected-button {
+  background-color: #2176AE;
+  font-size: 1.7em;
+}
+
 .bear-portrait {
   position: relative;
   background-color: white;
