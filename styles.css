@@ -198,38 +198,30 @@ h3 {
 .necklace {
   height: 13%;
   left: 31%;
-  position: absolute;
   top: 241px;
   transform: rotate(10deg);
   width: 28%;
-  z-index: 2;
 }
 
 .bowtie {
   left: 37%;
-  position: absolute;
   top: 41%;
   transform: rotate(11deg);
   width: 20%;
-  z-index: 2;
 }
 
 .smartwatch {
   left: 13.75%;
-  position: absolute;
   transform: rotate(70deg);
   top: 33%;
   width: 11%;
-  z-index: 2;
 }
 
 .sunglasses {
   left: 31%;
-  position: absolute;
   transform: rotate(16deg);
   top: 19%;
   width: 40%;
-  z-index: 2;
 }
 
 .saved-outfits {

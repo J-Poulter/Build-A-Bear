@@ -11,6 +11,8 @@ var outfitNum = 1;
 var outfitNameInput = document.querySelector('.user-input-js');
 var currentOutfit = new Outfit(outfitNameInput.value, outfitNum);
 var savedOutfitsSection = document.getElementById('saved-outfits');
+var saveForm = document.querySelector('.save-form');
+
 
 globalSelector.addEventListener('click', clickHandlerOutfits);
 
@@ -66,4 +68,5 @@ function saveOutfit() {
     <p class="outfit-name">${outfitNameInput.value}</p>
     <i class="far fa-times-circle"></i>
   </div>`)
+  saveForm.reset();
 }
