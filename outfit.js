@@ -1,9 +1,9 @@
 class Outfit {
-  constructor(title, id, background) {
-    this.title = title;
-    this.id = id;
+  constructor(outfitFile) {
+    this.title = outfitFile.title;
+    this.id = outfitFile.id || this.generateIdNum();
     this.garments = [null, null, null];// NOTE: hats, clothes, accessories//
-    this.background = background;
+    this.background = outfitFile.background;
   }
   changeGarment(garment) {
     if (garment.classList.contains('hats')) {
@@ -25,9 +25,13 @@ class Outfit {
     }
   }
 
-  changeBackground(background){
+  changeBackground(background) {
     if (background.classList.contains('backgrounds')) {
       this.background = background.alt;
     }
+  }
+
+  generateIdNum() {
+    return Math.random().toString(36).slice(2, 8);
   }
 }
