@@ -10,6 +10,7 @@ var globalSelector = document.querySelector('main');
 var outfitNum = 1;
 var outfitNameInput = document.querySelector('.user-input-js');
 var currentOutfit = new Outfit(outfitNameInput.value, outfitNum);
+var savedOutfitsSection = document.getElementById('saved-outfits');
 
 globalSelector.addEventListener('click', clickHandlerOutfits);
 
@@ -22,6 +23,8 @@ function clickHandlerOutfits() {
     selectButton(buttonAccessories, accessories);
   } else if (event.target.classList.contains('button-backgrounds-js')) {
     selectButton(buttonBackgrounds, backgrounds);
+  } else if (event.target.classList.contains('save-button-js')) {
+    saveOutfit();
   }
 }
 
@@ -56,4 +59,11 @@ function displayChoice(choiceType) {
   choiceType[x].classList.remove('hide');
   currentOutfit.changeBackground(choiceType[x]);
   currentOutfit.changeGarment(choiceType[x]);
+}
+
+function saveOutfit() {
+  savedOutfitsSection.insertAdjacentHTML('beforeend', `<div class="outfit-card">
+    <p class="outfit-name">placeholder</p>
+    <i class="far fa-times-circle"></i>
+  </div>`)
 }
