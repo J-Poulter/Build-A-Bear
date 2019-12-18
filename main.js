@@ -22,6 +22,8 @@ function clickHandlerOutfits() {
     selectButton(buttonAccessories, accessories);
   } else if (event.target.classList.contains('button-backgrounds-js')) {
     selectButton(buttonBackgrounds, backgrounds);
+  } else if (event.target.classList.contains('save-button-js')) {
+    saveOutfit();
   }
 }
 
@@ -56,4 +58,8 @@ function displayChoice(choiceType) {
   choiceType[x].classList.remove('hide');
   currentOutfit.changeBackground(choiceType[x]);
   currentOutfit.changeGarment(choiceType[x]);
+}
+
+function saveOutfit() {
+  console.log("im in the function")
 }
