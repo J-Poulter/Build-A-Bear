@@ -63,7 +63,7 @@ function displayChoice(choiceType) {
 
 function saveOutfit() {
   savedOutfitsSection.insertAdjacentHTML('beforeend', `<div class="outfit-card">
-    <p class="outfit-name">placeholder</p>
+    <p class="outfit-name">${outfitNameInput.value}</p>
     <i class="far fa-times-circle"></i>
   </div>`)
 }
