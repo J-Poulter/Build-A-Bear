@@ -10,6 +10,7 @@ var globalSelector = document.querySelector('main');
 var outfitNum = 1;
 var outfitNameInput = document.querySelector('.user-input-js');
 var currentOutfit = new Outfit(outfitNameInput.value, outfitNum);
+var savedOutfitsSection = document.getElementById('saved-outfits');
 
 globalSelector.addEventListener('click', clickHandlerOutfits);
 
@@ -61,5 +62,8 @@ function displayChoice(choiceType) {
 }
 
 function saveOutfit() {
-  console.log("im in the function")
+  savedOutfitsSection.insertAdjacentHTML('beforeend', `<div class="outfit-card">
+    <p class="outfit-name">placeholder</p>
+    <i class="far fa-times-circle"></i>
+  </div>`)
 }
