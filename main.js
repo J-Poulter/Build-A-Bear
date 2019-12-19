@@ -7,9 +7,8 @@ var clothes = document.querySelectorAll('.clothes-js');
 var accessories = document.querySelectorAll('.accessories-js');
 var backgrounds = document.querySelectorAll('.backgrounds-js');
 var globalSelector = document.querySelector('main');
-var outfitNum = 1;
 var outfitNameInput = document.querySelector('.user-input-js');
-var currentOutfit = new Outfit(outfitNameInput.value, outfitNum);
+var currentOutfit = new Outfit({});
 var savedOutfitsSection = document.getElementById('saved-outfits');
 var saveForm = document.querySelector('.save-form');
 var saveButton = document.querySelector('.save-button-js');
@@ -75,8 +74,7 @@ function saveOutfit() {
   removeChoice(allGarments);
   resetGarmentSelection(allButtons);
   enableButton();
-  currentOutfit.removeAllG();
-  // currentOutfit.generateIdNum();
+  currentOutfit = new Outfit({});
 }
 
 function enableButton() {
