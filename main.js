@@ -75,6 +75,7 @@ function saveOutfit() {
   currentOutfit.setTitle(outfitNameInput.value);
   var newOutfit = new Outfit(currentOutfit);
   outfitList.push(newOutfit);
+  saveToLocalStorage(newOutfit);
   resetHelper();
 }
 
@@ -92,4 +93,8 @@ function resetHelper() {
   resetGarmentSelection(allButtons);
   enableButton();
   currentOutfit = new Outfit({});
+}
+
+function saveToLocalStorage(newOutfit) {
+  localStorage.setItem(`${currentOutfit.id}`, newOutfit);
 }
