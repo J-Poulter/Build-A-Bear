@@ -39,7 +39,7 @@ function selectButton(buttonType, choiceType) {
     removeChoice(choiceType);
     currentOutfit.removeGarment(choiceType[x]);
   } else {
-    resetGarmentSelection(buttonType)
+    resetGarmentSelection(buttonType);
     event.target.classList.add('selected-button');
     displayChoice(choiceType);
   }
@@ -66,21 +66,26 @@ function displayChoice(choiceType) {
 }
 
 function saveOutfit() {
-  savedOutfitsSection.insertAdjacentHTML('beforeend', `<div class="outfit-card">
+  savedOutfitsSection.insertAdjacentHTML('beforeend',
+  `<div id=${currentOutfit.id} class="outfit-card">
     <p class="outfit-name">${outfitNameInput.value}</p>
     <i class="far fa-times-circle"></i>
-  </div>`)
-  saveForm.reset();
-  removeChoice(allGarments);
-  resetGarmentSelection(allButtons);
-  enableButton();
-  currentOutfit = new Outfit({});
+  </div>`);
+  resetHelper();
 }
 
 function enableButton() {
   if (outfitNameInput.value.length != 0 ) {
     saveButton.disabled = false;
   } else {
-    saveButton.disabled = true
+    saveButton.disabled = true;
   }
+}
+
+function resetHelper() {
+  saveForm.reset();
+  removeChoice(allGarments);
+  resetGarmentSelection(allButtons);
+  enableButton();
+  currentOutfit = new Outfit({});
 }
