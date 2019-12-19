@@ -21,7 +21,6 @@ saveForm.addEventListener('input', enableButton);
 window.addEventListener('load', retrieveLocalStorage);
 
 function clickHandlerOutfits() {
-  console.log(event.target.classList);
   if (event.target.classList.contains('button-hats-js')) {
     selectButton(buttonHats, hats);
   } else if (event.target.classList.contains('button-clothes-js')) {
@@ -32,7 +31,7 @@ function clickHandlerOutfits() {
     selectButton(buttonBackgrounds, backgrounds);
   } else if (event.target.classList.contains('save-button-js')) {
     saveOutfit();
-  } else if (event.target.classList.contains('far-js')) {
+  } else if (event.target.classList.contains('close-button-js')) {
     removeSaveCard();
   }
 }
@@ -74,7 +73,7 @@ function saveOutfit() {
   savedOutfitsSection.insertAdjacentHTML('beforeend',
   `<div id=${currentOutfit.id} class='outfit-card'>
     <p class='outfit-name'>${outfitNameInput.value}</p>
-    <i class='far fa-times-circle far-js'></i>
+    <i class='far fa-times-circle close-button-js'></i>
   </div>`);
   currentOutfit.setTitle(outfitNameInput.value);
   var newOutfit = new Outfit(currentOutfit);
@@ -111,5 +110,4 @@ function retrieveLocalStorage() {
 function removeSaveCard() {
   event.target.parentElement.remove();
   saveToLocalStorage();
-  // parent.remove();
 }
