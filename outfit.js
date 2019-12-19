@@ -5,6 +5,7 @@ class Outfit {
     this.garments = outfitFile.garments || [null, null, null];// NOTE: hats, clothes, accessories//
     this.background = outfitFile.background;
   }
+  
   changeGarment(garment) {
     if (garment.classList.contains('hats')) {
       this.garments.splice(0, 1, garment.alt);
