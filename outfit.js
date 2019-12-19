@@ -31,6 +31,10 @@ class Outfit {
     }
   }
 
+  setTitle(title) {
+    this.title = title;
+  }
+
   generateIdNum() {
     return Math.random().toString(36).slice(2, 8);
   }

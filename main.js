@@ -72,6 +72,7 @@ function saveOutfit() {
     <p class="outfit-name">${outfitNameInput.value}</p>
     <i class="far fa-times-circle"></i>
   </div>`);
+  currentOutfit.setTitle(outfitNameInput.value);
   var newOutfit = new Outfit(currentOutfit);
   outfitList.push(newOutfit);
   resetHelper();
