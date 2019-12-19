@@ -71,6 +71,7 @@ h3 {
 .button {
   display: block;
   background-color: #64D6FC;
+  cursor: pointer;
   font-size: 1.5em;
   height: fit-content;
   margin: 2.5%;
@@ -116,6 +117,12 @@ h3 {
   align-items: center;
   font-size: 2em;
   margin-top: 4%;
+  background-color: #2176AE;
+}
+
+.save-button:disabled {
+  background-color: rgba(100, 214, 252, 0.80);
+  cursor: initial;
 }
 
 .the-bear {

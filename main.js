@@ -12,9 +12,10 @@ var outfitNameInput = document.querySelector('.user-input-js');
 var currentOutfit = new Outfit(outfitNameInput.value, outfitNum);
 var savedOutfitsSection = document.getElementById('saved-outfits');
 var saveForm = document.querySelector('.save-form');
-
+var saveButton = document.querySelector('.save-button-js');
 
 globalSelector.addEventListener('click', clickHandlerOutfits);
+saveForm.addEventListener('input', enableButton);
 
 function clickHandlerOutfits() {
   if (event.target.classList.contains('button-hats-js')) {
@@ -43,7 +44,7 @@ function selectButton(buttonType, choiceType) {
   }
 }
 
-function resetGarmentSelection(buttonType){
+function resetGarmentSelection(buttonType) {
   for (var i = 0; i < buttonType.length; i++) {
     buttonType[i].classList.remove('selected-button');
   }
@@ -69,4 +70,12 @@ function saveOutfit() {
     <i class="far fa-times-circle"></i>
   </div>`)
   saveForm.reset();
+}
+
+function enableButton() {
+  if (outfitNameInput.value.length != 0 ) {
+    saveButton.disabled = false;
+  } else {
+    saveButton.disabled = true
+  }
 }
