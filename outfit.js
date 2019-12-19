@@ -2,7 +2,7 @@ class Outfit {
   constructor(outfitFile) {
     this.title = outfitFile.title;
     this.id = outfitFile.id || this.generateIdNum();
-    this.garments = [null, null, null];// NOTE: hats, clothes, accessories//
+    this.garments = outfitFile.garments || [null, null, null];// NOTE: hats, clothes, accessories//
     this.background = outfitFile.background;
   }
   changeGarment(garment) {
