@@ -8,6 +8,7 @@ var accessories = document.querySelectorAll('.accessories-js');
 var backgrounds = document.querySelectorAll('.backgrounds-js');
 var globalSelector = document.querySelector('main');
 var outfitNameInput = document.querySelector('.user-input-js');
+var outfitList = [];
 var currentOutfit = new Outfit({});
 var savedOutfitsSection = document.getElementById('saved-outfits');
 var saveForm = document.querySelector('.save-form');
@@ -71,6 +72,8 @@ function saveOutfit() {
     <p class="outfit-name">${outfitNameInput.value}</p>
     <i class="far fa-times-circle"></i>
   </div>`);
+  var newOutfit = new Outfit(currentOutfit);
+  outfitList.push(newOutfit);
   resetHelper();
 }
 
