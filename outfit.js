@@ -25,6 +25,11 @@ class Outfit {
     }
   }
 
+  removeAllG(garments) {
+    this.garments = [null, null, null];
+    this.background = undefined;
+  }
+
   changeBackground(background) {
     if (background.classList.contains('backgrounds')) {
       this.background = background.alt;

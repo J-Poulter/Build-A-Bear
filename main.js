@@ -13,6 +13,8 @@ var currentOutfit = new Outfit(outfitNameInput.value, outfitNum);
 var savedOutfitsSection = document.getElementById('saved-outfits');
 var saveForm = document.querySelector('.save-form');
 var saveButton = document.querySelector('.save-button-js');
+var allGarments = document.querySelectorAll('.garment-js');
+var allButtons = document.querySelectorAll('.all-buttons-js');
 
 globalSelector.addEventListener('click', clickHandlerOutfits);
 saveForm.addEventListener('input', enableButton);
@@ -70,6 +72,11 @@ function saveOutfit() {
     <i class="far fa-times-circle"></i>
   </div>`)
   saveForm.reset();
+  removeChoice(allGarments);
+  resetGarmentSelection(allButtons);
+  enableButton();
+  currentOutfit.removeAllG();
+  // currentOutfit.generateIdNum();
 }
 
 function enableButton() {
