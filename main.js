@@ -18,6 +18,7 @@ var allButtons = document.querySelectorAll('.all-buttons-js');
 
 globalSelector.addEventListener('click', clickHandlerOutfits);
 saveForm.addEventListener('input', enableButton);
+window.addEventListener('load', retrieveLocalStorage);
 
 function clickHandlerOutfits() {
   if (event.target.classList.contains('button-hats-js')) {
@@ -96,5 +97,10 @@ function resetHelper() {
 }
 
 function saveToLocalStorage(newOutfit) {
-  localStorage.setItem(`${currentOutfit.id}`, newOutfit);
+  localStorage.setItem('cardSection', savedOutfitsSection.innerHTML);
+  // localStorage.setItem(`${currentOutfit.id}`, newOutfit);
+}
+
+function retrieveLocalStorage() {
+  savedOutfitsSection.innerHTML = localStorage.getItem('cardSection');
 }
