@@ -85,7 +85,7 @@ h3 {
 
 .bear-portrait {
   background-color: white;
-  margin-top:5%;
+  margin-top: 5%;
   position: relative;
   width: 100%;
 }
@@ -108,7 +108,7 @@ h3 {
 .user-input,
 .button {
   border-radius: 12px;
-  box-shadow: 13px 12px 16px 0px rgba(0,0,0,0.53);
+  box-shadow: 13px 12px 16px 0px rgba(0, 0, 0, 0.53);
 }
 
 .save-button {
@@ -126,7 +126,7 @@ h3 {
 
 .the-bear {
   max-width: 100%;
-  transform: translate(-12px) ;
+  transform: translate(-12px);
 }
 
 .backgrounds {
@@ -241,7 +241,7 @@ h3 {
   align-items: baseline;
   background-color: #2176AE;
   border-radius: 30px;
-  box-shadow: 13px 12px 16px 0px rgba(0,0,0,0.53);
+  box-shadow: 13px 12px 16px 0px rgba(0, 0, 0, 0.53);
   font-size: 2em;
   font-weight: bold;
   justify-content: space-between;
