@@ -1,20 +1,20 @@
-var buttonHats = document.querySelectorAll('.button-hats-js');
-var buttonClothes = document.querySelectorAll('.button-clothes-js');
+var accessories = document.querySelectorAll('.accessories-js');
+var allButtons = document.querySelectorAll('.all-buttons-js');
+var allGarments = document.querySelectorAll('.garment-js');
+var backgrounds = document.querySelectorAll('.backgrounds-js');
 var buttonAccessories = document.querySelectorAll('.button-accessories-js');
 var buttonBackgrounds = document.querySelectorAll('.button-backgrounds-js');
-var hats = document.querySelectorAll('.hats-js');
+var buttonClothes = document.querySelectorAll('.button-clothes-js');
+var buttonHats = document.querySelectorAll('.button-hats-js');
 var clothes = document.querySelectorAll('.clothes-js');
-var accessories = document.querySelectorAll('.accessories-js');
-var backgrounds = document.querySelectorAll('.backgrounds-js');
-var globalSelector = document.querySelector('main');
-var outfitNameInput = document.querySelector('.user-input-js');
-var outfitList = [];
 var currentOutfit = new Outfit({});
+var globalSelector = document.querySelector('main');
+var hats = document.querySelectorAll('.hats-js');
+var outfitList = [];
+var outfitNameInput = document.querySelector('.user-input-js');
+var saveButton = document.querySelector('.save-button-js');
 var savedOutfitsSection = document.getElementById('saved-outfits');
 var saveForm = document.querySelector('.save-form');
-var saveButton = document.querySelector('.save-button-js');
-var allGarments = document.querySelectorAll('.garment-js');
-var allButtons = document.querySelectorAll('.all-buttons-js');
 
 globalSelector.addEventListener('click', clickHandlerOutfits);
 saveForm.addEventListener('input', enableButton);
@@ -106,7 +106,7 @@ function populateCard() {
 }
 
 function enableButton() {
-  if (outfitNameInput.value.length != 0 ) {
+  if (outfitNameInput.value.length != 0) {
     saveButton.disabled = false;
   } else {
     saveButton.disabled = true;
@@ -154,9 +154,9 @@ function redressBearHelper() {
   var outfitSelected = outfitList.find(outfit => outfit.id === event.target.id)
   currentOutfit = new Outfit(outfitSelected);
   var actions = [buttonHats[currentOutfit.garments[0].clickValue],
-  buttonClothes[currentOutfit.garments[1].clickValue],
-  buttonAccessories[currentOutfit.garments[2].clickValue],
-  buttonBackgrounds[currentOutfit.background.clickValue]];
+    buttonClothes[currentOutfit.garments[1].clickValue],
+    buttonAccessories[currentOutfit.garments[2].clickValue],
+    buttonBackgrounds[currentOutfit.background.clickValue]];
   for (var i = 0; i < actions.length; i ++) {
     if (actions[i] !== undefined) {
       actions[i].click();
