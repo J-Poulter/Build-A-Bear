@@ -70,12 +70,12 @@ function displayChoice(choiceType) {
 }
 
 function saveOutfit() {
+  currentOutfit.setTitle(outfitNameInput.value);
   savedOutfitsSection.insertAdjacentHTML('beforeend',
   `<div id=${currentOutfit.id} class='outfit-card'>
-    <p class='outfit-name'>${outfitNameInput.value}</p>
+    <p class='outfit-name'>${currentOutfit.title}</p>
     <i class='far fa-times-circle close-button-js'></i>
   </div>`);
-  currentOutfit.setTitle(outfitNameInput.value);
   var newOutfit = new Outfit(currentOutfit);
   outfitList.push(newOutfit);
   saveToLocalStorage(newOutfit);
