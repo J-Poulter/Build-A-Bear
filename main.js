@@ -72,7 +72,6 @@ function displayChoice(choiceType) {
 }
 
 function saveOutfit() {
-  debugger;
   currentOutfit.setTitle(outfitNameInput.value);
   if (outfitList.find(element => element.id === currentOutfit.id) === undefined) {
     saveNewOutfit();
@@ -90,7 +89,6 @@ function saveNewOutfit() {
 }
 
 function updateExistingOutfit() {
-  // debugger;
   var existingOutfit = outfitList.find(element => element.id === currentOutfit.id);
   var changeOutfit = outfitList.indexOf(existingOutfit);
   var outfitCardBox = document.getElementById(`${currentOutfit.id}`);
