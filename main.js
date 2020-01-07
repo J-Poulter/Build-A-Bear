@@ -33,6 +33,8 @@ function clickHandlerOutfits() {
     saveOutfit();
   } else if (event.target.classList.contains('close-button-js')) {
     removeSaveCard();
+  } else if (event.target.classList.contains('outfit-card-js')) {
+    redressBearHelper();
   }
 }
 
@@ -82,7 +84,7 @@ function saveOutfit() {
 
 function populateCard() {
   savedOutfitsSection.insertAdjacentHTML('beforeend',
-  `<div id=${currentOutfit.id} class='outfit-card'>
+  `<div id=${currentOutfit.id} class='outfit-card outfit-card-js'>
     <p class='outfit-name'>${currentOutfit.title}</p>
     <i class='far fa-times-circle close-button-js'></i>
   </div>`);
@@ -131,4 +133,19 @@ function removeSaveCard() {
   var remove = outfitList.indexOf(outfitRemoved);
   outfitList.splice(remove, 1);
   saveToLocalStorage();
+}
+
+function redressBearHelper() {
+  var outfitSelected = outfitList.find(outfit => outfit.id === event.target.id)
+  currentOutfit = new Outfit(outfitSelected);
+  var actions = [buttonHats[currentOutfit.garments[0].clickValue],
+  buttonClothes[currentOutfit.garments[1].clickValue],
+  buttonAccessories[currentOutfit.garments[2].clickValue],
+  buttonBackgrounds[currentOutfit.background.clickValue]];
+  for (var i = 0; i < actions.length; i ++) {
+    if (actions[i] !== undefined) {
+      actions[i].click();
+    }
+  }
+  outfitNameInput.value = currentOutfit.title;
 }

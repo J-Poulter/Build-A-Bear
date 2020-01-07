@@ -2,8 +2,10 @@ class Outfit {
   constructor(outfitFile) {
     this.title = outfitFile.title;
     this.id = outfitFile.id || this.generateIdNum();
-    this.garments = outfitFile.garments || [null, null, null];// NOTE: hats, clothes, accessories//
+    this.garments = outfitFile.garments || new Array(3).fill({garment: undefined, clickValue: undefined });
+    //NOTE: hats, clothes, accessories;
     this.background = outfitFile.background;
+
   }
 
   changeGarment(garment) {
@@ -18,17 +20,17 @@ class Outfit {
 
   removeGarment(garment) {
     if (garment.classList.contains('hats')) {
-      this.garments.splice(0, 1, null);
+      this.garments.splice(0, 1, '');
     } else if (garment.classList.contains('clothes')) {
-      this.garments.splice(1, 1, null);
+      this.garments.splice(1, 1, '');
     } else if (garment.classList.contains('accessories')) {
-      this.garments.splice(2, 1, null);
+      this.garments.splice(2, 1, '');
     }
   }
 
   changeBackground(background) {
     if (background.classList.contains('backgrounds')) {
-      this.background = background.alt;
+      this.background = {background: background.alt, clickValue: event.target.value};
     }
   }
 
@@ -39,4 +41,6 @@ class Outfit {
   generateIdNum() {
     return Math.random().toString(36).slice(2, 8);
   }
+
+
 }
