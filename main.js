@@ -70,16 +70,22 @@ function displayChoice(choiceType) {
 }
 
 function saveOutfit() {
-  savedOutfitsSection.insertAdjacentHTML('beforeend',
-  `<div id=${currentOutfit.id} class='outfit-card'>
-    <p class='outfit-name'>${outfitNameInput.value}</p>
-    <i class='far fa-times-circle close-button-js'></i>
-  </div>`);
-  currentOutfit.setTitle(outfitNameInput.value);
+  if (currentOutfit.title === undefined) {
+    currentOutfit.setTitle(outfitNameInput.value);
+  }
+  populateCard();
   var newOutfit = new Outfit(currentOutfit);
   outfitList.push(newOutfit);
   saveToLocalStorage(newOutfit);
   resetHelper();
+}
+
+function populateCard() {
+  savedOutfitsSection.insertAdjacentHTML('beforeend',
+  `<div id=${currentOutfit.id} class='outfit-card'>
+    <p class='outfit-name'>${currentOutfit.title}</p>
+    <i class='far fa-times-circle close-button-js'></i>
+  </div>`);
 }
 
 function enableButton() {
@@ -99,15 +105,30 @@ function resetHelper() {
 }
 
 function saveToLocalStorage(newOutfit) {
-  localStorage.setItem('cardSection', savedOutfitsSection.innerHTML);
+  localStorage.setItem('cardSection', JSON.stringify(outfitList));
   // localStorage.setItem(`${currentOutfit.id}`, newOutfit);
 }
 
 function retrieveLocalStorage() {
-  savedOutfitsSection.innerHTML = localStorage.getItem('cardSection');
+  var parsedLocalStorage = JSON.parse(localStorage.getItem('cardSection'));
+  if (localStorage.getItem('cardSection') !== null) {
+    outfitList = outfitList.concat(parsedLocalStorage);
+  }
+  rePopulateSavedCards();
+}
+
+function rePopulateSavedCards() {
+  for (var i = 0; i < outfitList.length; i++) {
+    currentOutfit = outfitList[i];
+    populateCard();
+    resetHelper();
+  }
 }
 
 function removeSaveCard() {
   event.target.parentElement.remove();
+  var outfitRemoved = outfitList.find(outfit => outfit.id === event.target.parentElement.id)
+  var remove = outfitList.indexOf(outfitRemoved);
+  outfitList.splice(remove, 1);
   saveToLocalStorage();
 }
