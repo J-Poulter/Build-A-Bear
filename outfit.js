@@ -5,7 +5,7 @@ class Outfit {
     this.garments = outfitFile.garments || [null, null, null];// NOTE: hats, clothes, accessories//
     this.background = outfitFile.background;
   }
-  
+
   changeGarment(garment) {
     if (garment.classList.contains('hats')) {
       this.garments.splice(0, 1, garment.alt);
@@ -18,11 +18,11 @@ class Outfit {
 
   removeGarment(garment) {
     if (garment.classList.contains('hats')) {
-      this.garments.splice(0, 1);
+      this.garments.splice(0, 1, null);
     } else if (garment.classList.contains('clothes')) {
-      this.garments.splice(1, 1);
+      this.garments.splice(1, 1, null);
     } else if (garment.classList.contains('accessories')) {
-      this.garments.splice(2, 1);
+      this.garments.splice(2, 1, null);
     }
   }
 
