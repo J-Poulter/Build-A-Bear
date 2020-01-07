@@ -5,7 +5,6 @@ class Outfit {
     this.garments = outfitFile.garments || new Array(3).fill({garment: undefined, clickValue: undefined});
     //NOTE: hats, clothes, accessories;
     this.background = outfitFile.background;
-
   }
 
   changeGarment(garment) {

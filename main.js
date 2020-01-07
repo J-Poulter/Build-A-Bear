@@ -72,20 +72,37 @@ function displayChoice(choiceType) {
 }
 
 function saveOutfit() {
-  if (currentOutfit.title === undefined) {
-    currentOutfit.setTitle(outfitNameInput.value);
+  debugger;
+  currentOutfit.setTitle(outfitNameInput.value);
+  if (outfitList.find(element => element.id === currentOutfit.id) === undefined) {
+    saveNewOutfit();
+  } else if (outfitList.find(element => element.id === currentOutfit.id)) {
+    updateExistingOutfit();
   }
+  saveToLocalStorage();
+  resetHelper();
+}
+
+function saveNewOutfit() {
   populateCard();
   var newOutfit = new Outfit(currentOutfit);
   outfitList.push(newOutfit);
-  saveToLocalStorage(newOutfit);
-  resetHelper();
+}
+
+function updateExistingOutfit() {
+  // debugger;
+  var existingOutfit = outfitList.find(element => element.id === currentOutfit.id);
+  var changeOutfit = outfitList.indexOf(existingOutfit);
+  var outfitCardBox = document.getElementById(`${currentOutfit.id}`);
+  var outfitCardTitle = outfitCardBox.querySelector('.outfit-name-js')
+  outfitCardTitle.innerText = `${currentOutfit.title}`;
+  outfitList.splice(changeOutfit, 1, new Outfit(currentOutfit));
 }
 
 function populateCard() {
   savedOutfitsSection.insertAdjacentHTML('beforeend',
   `<div id=${currentOutfit.id} class='outfit-card outfit-card-js'>
-    <p class='outfit-name'>${currentOutfit.title}</p>
+    <p class='outfit-name outfit-name-js'>${currentOutfit.title}</p>
     <i class='far fa-times-circle close-button-js'></i>
   </div>`);
 }
@@ -106,9 +123,8 @@ function resetHelper() {
   currentOutfit = new Outfit({});
 }
 
-function saveToLocalStorage(newOutfit) {
+function saveToLocalStorage() {
   localStorage.setItem('cardSection', JSON.stringify(outfitList));
-  // localStorage.setItem(`${currentOutfit.id}`, newOutfit);
 }
 
 function retrieveLocalStorage() {
@@ -136,6 +152,7 @@ function removeSaveCard() {
 }
 
 function redressBearHelper() {
+  resetHelper();
   var outfitSelected = outfitList.find(outfit => outfit.id === event.target.id)
   currentOutfit = new Outfit(outfitSelected);
   var actions = [buttonHats[currentOutfit.garments[0].clickValue],
@@ -148,4 +165,5 @@ function redressBearHelper() {
     }
   }
   outfitNameInput.value = currentOutfit.title;
+  enableButton();
 }
