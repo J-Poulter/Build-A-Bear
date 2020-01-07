@@ -8,11 +8,11 @@ class Outfit {
 
   changeGarment(garment) {
     if (garment.classList.contains('hats')) {
-      this.garments.splice(0, 1, garment.alt);
+      this.garments.splice(0, 1, {garment: garment.alt, clickValue: event.target.value});
     } else if (garment.classList.contains('clothes')) {
-      this.garments.splice(1, 1, garment.alt);
+      this.garments.splice(1, 1, {garment: garment.alt, clickValue: event.target.value});
     } else if (garment.classList.contains('accessories')) {
-      this.garments.splice(2, 1, garment.alt);
+      this.garments.splice(2, 1, {garment: garment.alt, clickValue: event.target.value});
     }
   }
 
