@@ -10,7 +10,7 @@ var clothes = document.querySelectorAll('.clothes-js');
 var currentOutfit = new Outfit({});
 var globalSelector = document.querySelector('main');
 var hats = document.querySelectorAll('.hats-js');
-var outfitList = [];
+var outfitArray = [];
 var outfitNameInput = document.querySelector('.user-input-js');
 var saveButton = document.querySelector('.save-button-js');
 var savedOutfitsSection = document.getElementById('saved-outfits');
@@ -38,44 +38,44 @@ function clickHandlerOutfits() {
   }
 }
 
-function selectButton(buttonType, choiceType) {
+function selectButton(buttonNodeList, garmentsNodeList) {
   x = event.target.value;
   if (event.target.classList.contains('selected-button')) {
     event.target.classList.remove('selected-button');
-    removeChoice(choiceType);
-    currentOutfit.removeGarment(choiceType[x]);
+    removeChoice(garmentsNodeList);
+    currentOutfit.removeGarment(garmentsNodeList[x]);
   } else {
-    resetGarmentSelection(buttonType);
+    resetGarmentSelection(buttonNodeList);
     event.target.classList.add('selected-button');
-    displayChoice(choiceType);
+    displayChoice(garmentsNodeList);
   }
 }
 
-function resetGarmentSelection(buttonType) {
-  for (var i = 0; i < buttonType.length; i++) {
-    buttonType[i].classList.remove('selected-button');
+function resetGarmentSelection(buttonNodeList) {
+  for (var i = 0; i < buttonNodeList.length; i++) {
+    buttonNodeList[i].classList.remove('selected-button');
   }
 }
 
-function removeChoice(choiceType) {
-  for (var i = 0; i < choiceType.length; i++) {
-    choiceType[i].classList.add('hide');
+function removeChoice(garmentsNodeList) {
+  for (var i = 0; i < garmentsNodeList.length; i++) {
+    garmentsNodeList[i].classList.add('hide');
   }
 }
 
-function displayChoice(choiceType) {
-  removeChoice(choiceType);
+function displayChoice(garmentsNodeList) {
+  removeChoice(garmentsNodeList);
   x = event.target.value;
-  choiceType[x].classList.remove('hide');
-  currentOutfit.changeBackground(choiceType[x]);
-  currentOutfit.changeGarment(choiceType[x]);
+  garmentsNodeList[x].classList.remove('hide');
+  currentOutfit.changeBackground(garmentsNodeList[x]);
+  currentOutfit.changeGarment(garmentsNodeList[x]);
 }
 
 function saveOutfit() {
   currentOutfit.setTitle(outfitNameInput.value);
-  if (outfitList.find(element => element.id === currentOutfit.id) === undefined) {
+  if (outfitArray.find(element => element.id === currentOutfit.id) === undefined) {
     saveNewOutfit();
-  } else if (outfitList.find(element => element.id === currentOutfit.id)) {
+  } else {
     updateExistingOutfit();
   }
   saveToLocalStorage();
@@ -85,16 +85,16 @@ function saveOutfit() {
 function saveNewOutfit() {
   populateCard();
   var newOutfit = new Outfit(currentOutfit);
-  outfitList.push(newOutfit);
+  outfitArray.push(newOutfit);
 }
 
 function updateExistingOutfit() {
-  var existingOutfit = outfitList.find(element => element.id === currentOutfit.id);
-  var changeOutfit = outfitList.indexOf(existingOutfit);
+  var existingOutfit = outfitArray.find(element => element.id === currentOutfit.id);
+  var changeOutfit = outfitArray.indexOf(existingOutfit);
+  outfitArray.splice(changeOutfit, 1, new Outfit(currentOutfit));
   var outfitCardBox = document.getElementById(`${currentOutfit.id}`);
-  var outfitCardTitle = outfitCardBox.querySelector('.outfit-name-js')
+  var outfitCardTitle = outfitCardBox.querySelector('.outfit-name-js');
   outfitCardTitle.innerText = `${currentOutfit.title}`;
-  outfitList.splice(changeOutfit, 1, new Outfit(currentOutfit));
 }
 
 function populateCard() {
@@ -122,20 +122,20 @@ function resetHelper() {
 }
 
 function saveToLocalStorage() {
-  localStorage.setItem('cardSection', JSON.stringify(outfitList));
+  localStorage.setItem('cardSection', JSON.stringify(outfitArray));
 }
 
 function retrieveLocalStorage() {
   var parsedLocalStorage = JSON.parse(localStorage.getItem('cardSection'));
   if (localStorage.getItem('cardSection') !== null) {
-    outfitList = outfitList.concat(parsedLocalStorage);
+    outfitArray = outfitArray.concat(parsedLocalStorage);
   }
   rePopulateSavedCards();
 }
 
 function rePopulateSavedCards() {
-  for (var i = 0; i < outfitList.length; i++) {
-    currentOutfit = outfitList[i];
+  for (var i = 0; i < outfitArray.length; i++) {
+    currentOutfit = outfitArray[i];
     populateCard();
     resetHelper();
   }
@@ -143,15 +143,15 @@ function rePopulateSavedCards() {
 
 function removeSaveCard() {
   event.target.parentElement.remove();
-  var outfitRemoved = outfitList.find(outfit => outfit.id === event.target.parentElement.id)
-  var remove = outfitList.indexOf(outfitRemoved);
-  outfitList.splice(remove, 1);
+  var outfitRemoved = outfitArray.find(outfit => outfit.id === event.target.parentElement.id)
+  var remove = outfitArray.indexOf(outfitRemoved);
+  outfitArray.splice(remove, 1);
   saveToLocalStorage();
 }
 
 function redressBearHelper() {
   resetHelper();
-  var outfitSelected = outfitList.find(outfit => outfit.id === event.target.id)
+  var outfitSelected = outfitArray.find(outfit => outfit.id === event.target.id)
   currentOutfit = new Outfit(outfitSelected);
   var actions = [buttonHats[currentOutfit.garments[0].clickValue],
     buttonClothes[currentOutfit.garments[1].clickValue],
