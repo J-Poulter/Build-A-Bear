@@ -1,5 +1,5 @@
 # Product Name
-##Build-A-Bear
+## Build-A-Bear
 
 Build-A-Bear is an all ages, user friendly application. It is an interactive game that allowed the user to choose a variety of garments to wear and a fun background. The application allows the user to save the chosen attire with the background, along with a name of choosing. The user can recall and/or edit the saved set.
 
