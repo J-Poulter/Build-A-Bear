@@ -38,37 +38,37 @@ function clickHandlerOutfits() {
   }
 }
 
-function selectButton(buttonType, choiceType) {
+function selectButton(buttonNodeList, garmentsNodeList) {
   x = event.target.value;
   if (event.target.classList.contains('selected-button')) {
     event.target.classList.remove('selected-button');
-    removeChoice(choiceType);
-    currentOutfit.removeGarment(choiceType[x]);
+    removeChoice(garmentsNodeList);
+    currentOutfit.removeGarment(garmentsNodeList[x]);
   } else {
-    resetGarmentSelection(buttonType);
+    resetGarmentSelection(buttonNodeList);
     event.target.classList.add('selected-button');
-    displayChoice(choiceType);
+    displayChoice(garmentsNodeList);
   }
 }
 
-function resetGarmentSelection(buttonType) {
-  for (var i = 0; i < buttonType.length; i++) {
-    buttonType[i].classList.remove('selected-button');
+function resetGarmentSelection(buttonNodeList) {
+  for (var i = 0; i < buttonNodeList.length; i++) {
+    buttonNodeList[i].classList.remove('selected-button');
   }
 }
 
-function removeChoice(choiceType) {
-  for (var i = 0; i < choiceType.length; i++) {
-    choiceType[i].classList.add('hide');
+function removeChoice(garmentsNodeList) {
+  for (var i = 0; i < garmentsNodeList.length; i++) {
+    garmentsNodeList[i].classList.add('hide');
   }
 }
 
-function displayChoice(choiceType) {
-  removeChoice(choiceType);
+function displayChoice(garmentsNodeList) {
+  removeChoice(garmentsNodeList);
   x = event.target.value;
-  choiceType[x].classList.remove('hide');
-  currentOutfit.changeBackground(choiceType[x]);
-  currentOutfit.changeGarment(choiceType[x]);
+  garmentsNodeList[x].classList.remove('hide');
+  currentOutfit.changeBackground(garmentsNodeList[x]);
+  currentOutfit.changeGarment(garmentsNodeList[x]);
 }
 
 function saveOutfit() {
