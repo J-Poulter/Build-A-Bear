@@ -39,8 +39,10 @@ function clickHandlerOutfits() {
 }
 
 function selectButton(buttonNodeList, garmentsNodeList) {
-  x = event.target.value;
-  if (event.target.classList.contains('selected-button')) {
+  var garmentIndex = event.target.value;
+  var buttonIsSelected = event.target.classList.contains('selected-button');
+
+  if (buttonIsSelected) {
     event.target.classList.remove('selected-button');
     removeChoice(garmentsNodeList);
     currentOutfit.removeGarment(garmentsNodeList[x]);
@@ -106,11 +108,7 @@ function populateCard() {
 }
 
 function enableButton() {
-  if (outfitNameInput.value.length != 0) {
-    saveButton.disabled = false;
-  } else {
-    saveButton.disabled = true;
-  }
+  saveButton.disabled = outfitNameInput.value.length === 0
 }
 
 function resetHelper() {
@@ -137,8 +135,8 @@ function rePopulateSavedCards() {
   for (var i = 0; i < outfitArray.length; i++) {
     currentOutfit = outfitArray[i];
     populateCard();
-    resetHelper();
   }
+  resetHelper();
 }
 
 function removeSaveCard() {
@@ -149,17 +147,23 @@ function removeSaveCard() {
   saveToLocalStorage();
 }
 
+var arr = new Array(new Array(10,1))
+
 function redressBearHelper() {
   resetHelper();
-  var outfitSelected = outfitArray.find(outfit => outfit.id === event.target.id)
-  currentOutfit = new Outfit(outfitSelected);
-  var actions = [buttonHats[currentOutfit.garments[0].clickValue],
-    buttonClothes[currentOutfit.garments[1].clickValue],
+  var outfitDetails = outfitArray.find(outfit => outfit.id === event.target.id)
+  currentOutfit = new Outfit(outfitDetails);
+  var clickHatButton = buttonHats[currentOutfit.garments[0].clickValue];
+  var clickClothesButton = buttonClothes[currentOutfit.garments[1].clickValue];
+  var buttons = [
+    clickHatButton,
+    clickClothesButton,
     buttonAccessories[currentOutfit.garments[2].clickValue],
-    buttonBackgrounds[currentOutfit.background.clickValue]];
-  for (var i = 0; i < actions.length; i ++) {
-    if (actions[i] !== undefined) {
-      actions[i].click();
+    buttonBackgrounds[currentOutfit.background.clickValue]
+  ];
+  for (var i = 0; i < buttons.length; i ++) {
+    if (buttons[i] !== undefined) {
+      buttons[i].click();
     }
   }
   outfitNameInput.value = currentOutfit.title;
